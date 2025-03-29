@@ -10,7 +10,7 @@ const PopItems = () => {
     <motion.div
       className="h-screen absolute right-[550px]"
       animate={{ x: position }}
-      transition={{ type: 'spring' }}
+      transition={{ type: 'spring', duration: 5 }}
     >
       <img className="h-full min-w-[520px]" src={Pop} alt="pop-image" />
       <motion.img

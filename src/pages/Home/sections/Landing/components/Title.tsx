@@ -27,7 +27,7 @@ const Title = () => {
   const name = 'By: Maria Priscilla Tanujaya';
 
   return (
-    <div className="absolute w-full top-0 left-0 bg-amber-50 md:bg-transparent md:top-[15vh] md:left-8 p-8 ">
+    <div className="absolute w-full top-0 left-0  md:top-[15vh] md:left-8 p-8 ">
       <h1 className="text-3xl text-black md:text-6xl text-nowrap transition-all">
         {title.map((el, i) => (
           <Animated key={i} el={el} i={i} delay={title.length} />

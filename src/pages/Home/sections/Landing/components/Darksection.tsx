@@ -7,6 +7,8 @@ import {
   animate,
   MotionValue,
 } from 'framer-motion';
+import { Sparkles } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 import { useEffect } from 'react';
 interface DarkSectionProps {
   children: React.ReactNode;
@@ -26,7 +28,7 @@ const DarkSection = (props: DarkSectionProps) => {
     });
   }, []);
   return (
-    <motion.section
+    <motion.div
       style={{ backgroundImage }}
       className="w-full h-full rotate-315 overflow-hidden"
     >
@@ -35,7 +37,20 @@ const DarkSection = (props: DarkSectionProps) => {
           {props.children}
         </div>
       </div>
-    </motion.section>
+      <div className="absolute inset-0 top-0 left-0 w-200 h-200">
+        <Canvas>
+          <Sparkles
+            color={'white'}
+            size={10}
+            opacity={1}
+            count={100}
+            speed={0.3}
+            noise={1}
+            scale={10}
+          />
+        </Canvas>
+      </div>
+    </motion.div>
   );
 };
 

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import Envelope from './components/Envelope';
 import Stamp from 'assets/home/stamp.png';
 import Eye from './components/Eye';
@@ -9,7 +10,15 @@ const Landing = () => {
   return (
     <section className="relative h-screen w-screen bg-amber-50 overflow-hidden snap-center">
       <Envelope />
-      <div className="absolute w-[2000px] h-[2000px] top-[calc(50%-1000px)] left-[70vw]">
+      <motion.div
+        animate={{
+          translateX: ['90vw', '70vw'],
+          transition: {
+            duration: 1,
+          },
+        }}
+        className="absolute w-[2000px] h-[2000px] top-[calc(50%-1000px)]"
+      >
         <DarkSection>
           <div className="flex h-full justify-end items-center">
             <Eye />
@@ -21,7 +30,7 @@ const Landing = () => {
           alt="stamp"
           className="absolute w-40 h-40 top-[calc(50%-80px)] left-[-25%]"
         />
-      </div>
+      </motion.div>
       <Title />
     </section>
   );
