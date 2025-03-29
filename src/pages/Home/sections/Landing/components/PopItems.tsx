@@ -4,17 +4,17 @@ import Pop from 'assets/home/pop.png';
 import Cloud from 'assets/home/cloud.webp';
 
 const PopItems = () => {
-  const [position] = useState(200);
+  const [position] = useState(450);
 
   return (
     <motion.div
-      className="h-screen absolute right-60"
+      className="h-screen absolute right-[550px]"
       animate={{ x: position }}
       transition={{ type: 'spring' }}
     >
       <img className="h-full min-w-[520px]" src={Pop} alt="pop-image" />
       <motion.img
-        animate={{ x: [0, 200] }}
+        animate={{ x: [0, 400] }}
         transition={{
           duration: 20,
           repeat: Infinity,

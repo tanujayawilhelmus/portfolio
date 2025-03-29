@@ -12,7 +12,7 @@ const Animated: React.FC<AnimatedProps> = ({ el, i, delay }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{
-        duration: 0.25,
+        duration: 1,
         delay: i / delay,
       }}
     >
@@ -43,9 +43,10 @@ const Title = () => {
           className="text-xl font-light text-black md:text-4xl"
           animate={{
             translateY: [-10, 0, 0],
+            opacity: [0, 1],
           }}
           transition={{
-            duration: 2,
+            duration: 5,
           }}
         >
           {name}
