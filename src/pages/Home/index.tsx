@@ -1,24 +1,21 @@
 import Envelope from './components/Envelope';
 import Stamp from 'assets/home/stamp.png';
-import Nangis from './components/Eye';
+import Eye from './components/Eye';
 import PopItems from './components/PopItems';
 import Title from './components/Title';
+import DarkSection from './components/Darksection';
 
 const Home = () => {
   return (
     <div className="relative h-screen w-screen bg-amber-50 overflow-hidden">
       <Envelope />
       <div className="absolute w-[2000px] h-[2000px] top-[calc(50%-1000px)] left-[70vw]">
-        <div className="bg-black w-full h-full rotate-315 overflow-hidden">
-          <div className="rotate-[-315deg] w-full h-full">
-            <div className="absolute h-screen w-screen bottom-[calc(50%-50vh)] left-[-70vw]">
-              <div className="flex h-full justify-end items-center">
-                <Nangis />
-                <PopItems />
-              </div>
-            </div>
+        <DarkSection>
+          <div className="flex h-full justify-end items-center">
+            <Eye />
+            <PopItems />
           </div>
-        </div>
+        </DarkSection>
         <img
           src={Stamp}
           alt="stamp"

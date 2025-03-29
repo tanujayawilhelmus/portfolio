@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 const Eye = () => {
-  const [opacity] = useState(1);
+  const [opacity] = useState(0.8);
   return (
     <motion.img
       src={Nangis}
