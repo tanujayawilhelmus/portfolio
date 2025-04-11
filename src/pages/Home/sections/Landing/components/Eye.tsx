@@ -1,4 +1,4 @@
-import Nangis from 'assets/home/nangis.png';
+import Nangis from 'assets/home/nangis.webp';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import Pop from 'assets/home/pop.png';
+import Pop from 'assets/home/pop.webp';
 import Cloud from 'assets/home/cloud.webp';
 
 const PopItems = () => {
@@ -14,9 +14,9 @@ const PopItems = () => {
     >
       <img className="h-full min-w-[520px]" src={Pop} alt="pop-image" />
       <motion.img
-        animate={{ x: [0, 400] }}
+        animate={{ x: [-100, 400] }}
         transition={{
-          duration: 20,
+          duration: 40,
           repeat: Infinity,
           repeatType: 'reverse',
         }}
