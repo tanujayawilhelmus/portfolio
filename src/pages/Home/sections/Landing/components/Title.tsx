@@ -16,7 +16,7 @@ const Animated: React.FC<AnimatedProps> = ({ el, i, delay }) => {
         delay: i / delay,
       }}
     >
-      {el}{' '}
+      {el}
     </motion.span>
   );
 };

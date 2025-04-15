@@ -4,7 +4,10 @@ import Profile from 'assets/about/profile.jpg';
 
 const About = () => {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start center', 'center end'],
+  });
   const spring = useSpring(scrollYProgress, {
     stiffness: 100,
     duration: 2,
@@ -14,11 +17,11 @@ const About = () => {
   const opacity = useTransform(spring, [0, 1], [0, 1]);
   const marginTop = useTransform(spring, [0, 1], [-200, 0]);
   return (
-    <section
-      className="relative w-screen h-screen bg-amber-50 snap-center"
-      ref={ref}
-    >
-      <div className="flex flex-col items-center justify-center h-full">
+    <section className="relative w-screen h-screen bg-amber-50 snap-center">
+      <div
+        className="flex flex-col items-center justify-center h-full"
+        ref={ref}
+      >
         <div className="text-center pb-5 px-16">
           <h2 className="text-5xl">Art is my Passion</h2>
           <h2 className="text-3xl">and Fashion is my Expression</h2>
