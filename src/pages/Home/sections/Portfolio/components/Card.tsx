@@ -1,16 +1,26 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { createPortal } from 'react-dom';
+import Projects from './Projects';
 
 interface CardProps {
+  id: number;
   title: string;
   description: string;
   imageUrl: string;
   date: string;
 }
 
-const Card: React.FC<CardProps> = ({ title, date, description, imageUrl }) => {
+const Card: React.FC<CardProps> = ({
+  id,
+  title,
+  date,
+  description,
+  imageUrl,
+}) => {
   const [flip, setFlip] = useState(false);
+  const body = useRef(document.querySelector('html'));
+
   return (
     <div
       className={`
@@ -19,7 +29,7 @@ const Card: React.FC<CardProps> = ({ title, date, description, imageUrl }) => {
       `}
     >
       <motion.div
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.5 }}
         animate={{ rotateY: flip ? 180 : 0 }}
       >
         <img src={imageUrl} alt={title} className="scale-105 w-full" />
@@ -43,9 +53,16 @@ const Card: React.FC<CardProps> = ({ title, date, description, imageUrl }) => {
         </div>
       </motion.div>
       <motion.div
-        className="absolute bg-black top-0 left-0 w-full h-full scale-110"
+        className="bg-black top-0 left-0 w-full h-full scale-110"
         initial={{ rotateY: 0, opacity: 0 }}
-        animate={{ rotateY: flip ? 0 : 180, opacity: flip ? 1 : 0 }}
+        animate={{
+          rotateY: flip ? 0 : 180,
+          opacity: flip ? 1 : 0,
+          scale: flip ? 2 : 1,
+          position: flip ? 'fixed' : 'absolute',
+          top: flip ? '0' : 'auto',
+          left: flip ? '0' : 'auto',
+        }}
         transition={{ duration: 0.7 }}
       >
         {flip &&
@@ -55,21 +72,30 @@ const Card: React.FC<CardProps> = ({ title, date, description, imageUrl }) => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7 }}
               style={{
-                background: 'rgba(0, 0, 0, 0.8)',
+                background: 'rgba(0, 0, 0, 0.9)',
               }}
-              className="fixed top-0 left-0 w-full h-full text-white p-4 overflow-auto"
+              className="fixed top-0 left-0 w-full h-full text-white p-4 overflow-y-auto overflow-x-hidden"
             >
               <div className="flex flex-col">
-                <div className="w-full items-end justify-end flex">
+                <div className="w-full items-end justify-end flex sticky top-0 bg-[rgba(0, 0, 0, 0.9)] z-10">
                   <motion.button
                     className="cursor-pointer p-4"
-                    onClick={() => setFlip(false)}
+                    onClick={() => {
+                      setFlip(false);
+                      body.current?.classList.remove('overflow-hidden');
+                    }}
                   >
                     {`\u2716`}
                   </motion.button>
                 </div>
-                <div className="flex justify-center">
-                  <p className="text-sm">{description}</p>
+                <div className="flex justify-center items-center w-full">
+                  <div className="max-w-3xl overflow-y-auto">
+                    <Projects
+                      id={id}
+                      description={description}
+                      imageUrl={imageUrl}
+                    />
+                  </div>
                 </div>
               </div>
             </motion.div>,
@@ -81,7 +107,10 @@ const Card: React.FC<CardProps> = ({ title, date, description, imageUrl }) => {
         initial={{ background: 'rgba(0, 0, 0, 0)', opacity: 0 }}
         whileHover={{ background: 'rgba(0, 0, 0, 0.5)', opacity: 1 }}
         className="absolute top-0 left-0 w-full h-full bg-black cursor-pointer"
-        onClick={() => setFlip((draft) => !draft)}
+        onClick={() => {
+          setFlip(true);
+          body.current?.classList.add('overflow-hidden');
+        }}
       >
         <div className="absolute bottom-0 left-0 w-full text-white p-4 overflow-auto max-h-full">
           <p>{description}</p>

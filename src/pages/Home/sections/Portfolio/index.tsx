@@ -11,6 +11,7 @@ const Portfolio = () => {
         <div className="columns-1 sm:columns-2 md:columns-3 pt-10 pb-60 px-4 md:px-20">
           {portfolios.map((portfolio) => (
             <Card
+              id={portfolio.id || 0}
               key={portfolio.title}
               title={portfolio.title}
               date={portfolio.date}

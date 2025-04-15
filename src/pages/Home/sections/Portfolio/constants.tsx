@@ -10,12 +10,14 @@ import WishingFountain from 'assets/portfolio/wishing-fountain/front.webp';
 
 export const portfolios = [
   {
+    id: 1,
     title: 'Check project',
     date: 'February 2022',
     imageUrl: Check,
     description: `Titled "Moon and Sun". This collection shows how beautiful is the love given by the Sun to the Moon.`,
   },
   {
+    id: 2,
     title: 'Dress project',
     date: 'March 2022',
     imageUrl: Dress,
@@ -23,6 +25,7 @@ export const portfolios = [
       "Usha doshi" technique is used to provide volume and detail according to the design.`,
   },
   {
+    id: 3,
     title: 'Sweater project',
     date: 'May 2022',
     imageUrl: Sweater,
@@ -30,6 +33,7 @@ export const portfolios = [
       The peaceful and beautiful nature of the forest is depicted in this collection.`,
   },
   {
+    id: 4,
     title: 'Sera Secreta',
     date: 'June 2022',
     imageUrl: SeraSecreta,
@@ -37,6 +41,7 @@ export const portfolios = [
       I incorporated the secret greenhouse theme with semi-transluscent fabrics in a semi-fit semi-loose structure to resemble the greenhouse look.`,
   },
   {
+    id: 5,
     title: 'Hollit project',
     date: 'October 2022',
     imageUrl: Hollit,
@@ -44,12 +49,14 @@ export const portfolios = [
       It is a symbol of hope and a reminder that we share the world with other creatures, hence why "sustainable design" is the main concept of this collection. `,
   },
   {
+    id: 6,
     title: 'Estungkara',
     date: 'May 2023',
     imageUrl: Estungkara,
     description: `Heavily inspired by "Wayang Dewi Srikandi", the collection showcases how I blended in cultural and ethical values into modern fashion.`,
   },
   {
+    id: 7,
     title: 'Wishing Fountain',
     date: 'July 2023',
     imageUrl: WishingFountain,
@@ -57,6 +64,7 @@ export const portfolios = [
       No matter what is the condition, humans have the right to dream and hope for a better future.`,
   },
   {
+    id: 8,
     title: 'The Underdog Circus',
     date: 'October 2023',
     imageUrl: TheUnderDogCircus,
@@ -65,6 +73,7 @@ export const portfolios = [
       The nostalgic feeling of childhood is transformed into a collection that is fun, playful, and artistic.`,
   },
   {
+    id: 9,
     title: 'Onnellinen',
     date: 'June 2024',
     imageUrl: Onnellinen,
