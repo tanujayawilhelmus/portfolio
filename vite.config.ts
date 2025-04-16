@@ -16,6 +16,7 @@ export default defineConfig({
     alias: {
       assets: '/src/assets',
       pages: '/src/pages',
+      utils: '/src/utils',
     },
   },
 });

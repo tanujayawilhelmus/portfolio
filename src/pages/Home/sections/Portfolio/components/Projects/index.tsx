@@ -47,7 +47,7 @@ const Projects = (props: ProjectsProps) => {
       break;
   }
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
+    <React.Suspense fallback={<div></div>}>
       <ComponentToRender description={description} imageUrl={imageUrl} />
     </React.Suspense>
   );

@@ -17,7 +17,7 @@ const About = () => {
   const opacity = useTransform(spring, [0, 1], [0, 1]);
   const marginTop = useTransform(spring, [0, 1], [-200, 0]);
   return (
-    <section className="relative w-screen h-screen bg-amber-50 snap-center">
+    <section className="relative w-dvw h-dvh bg-amber-50 snap-start">
       <div
         className="flex flex-col items-center justify-center h-full"
         ref={ref}
@@ -33,7 +33,7 @@ const About = () => {
             className="h-60 w-60 md:h-80 md:w-80 rounded-full"
           />
         </motion.div>
-        <div className="pt-4 text-center px-16">
+        <div className="pt-4 text-center px-4 sm:px-16">
           <p>
             People and dresses are the subjects I draw the most throughout my
             childhood.

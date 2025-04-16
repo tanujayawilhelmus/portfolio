@@ -8,7 +8,7 @@ const PopItems = () => {
 
   return (
     <motion.div
-      className="h-screen absolute right-[550px]"
+      className="h-dvh absolute right-[550px]"
       animate={{ x: position }}
       transition={{ type: 'spring', duration: 5 }}
     >

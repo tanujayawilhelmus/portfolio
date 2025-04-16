@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { createPortal } from 'react-dom';
 import Projects from './Projects';
 
@@ -19,7 +19,6 @@ const Card: React.FC<CardProps> = ({
   imageUrl,
 }) => {
   const [flip, setFlip] = useState(false);
-  const body = useRef(document.querySelector('html'));
 
   return (
     <div
@@ -65,42 +64,42 @@ const Card: React.FC<CardProps> = ({
         }}
         transition={{ duration: 0.7 }}
       >
-        {flip &&
-          createPortal(
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7 }}
-              style={{
-                background: 'rgba(0, 0, 0, 0.9)',
-              }}
-              className="fixed top-0 left-0 w-full h-full text-white p-4 overflow-y-auto overflow-x-hidden"
-            >
-              <div className="flex flex-col">
-                <div className="w-full items-end justify-end flex sticky top-0 bg-[rgba(0, 0, 0, 0.9)] z-10">
-                  <motion.button
-                    className="cursor-pointer p-4"
-                    onClick={() => {
-                      setFlip(false);
-                      body.current?.classList.remove('overflow-hidden');
-                    }}
-                  >
-                    {`\u2716`}
-                  </motion.button>
-                </div>
-                <div className="flex justify-center items-center w-full">
-                  <div className="max-w-3xl overflow-y-auto">
-                    <Projects
-                      id={id}
-                      description={description}
-                      imageUrl={imageUrl}
-                    />
+        {createPortal(
+          <AnimatePresence mode="wait">
+            {flip && (
+              <motion.div
+                exit={{ opacity: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.7 }}
+                className="fixed top-0 left-0 w-full h-full text-white px-2 overflow-y-auto overflow-x-hidden bg-black/90"
+              >
+                <div className="flex flex-col pt-4">
+                  <div className="w-full items-end justify-end flex sticky top-0 bg-black/50 z-10">
+                    <motion.button
+                      className="cursor-pointer p-4"
+                      onClick={() => {
+                        setFlip(false);
+                      }}
+                    >
+                      {`\u2716`}
+                    </motion.button>
+                  </div>
+                  <div className="flex justify-center items-center w-full px-2">
+                    <div className="max-w-3xl overflow-y-auto">
+                      <Projects
+                        id={id}
+                        description={description}
+                        imageUrl={imageUrl}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>,
-            document.body
-          )}
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
       </motion.div>
 
       <motion.button
@@ -109,7 +108,6 @@ const Card: React.FC<CardProps> = ({
         className="absolute top-0 left-0 w-full h-full bg-black cursor-pointer"
         onClick={() => {
           setFlip(true);
-          body.current?.classList.add('overflow-hidden');
         }}
       >
         <div className="absolute bottom-0 left-0 w-full text-white p-4 overflow-auto max-h-full">
